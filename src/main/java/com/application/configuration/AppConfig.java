@@ -21,7 +21,6 @@ public class AppConfig {
 	    MappingJackson2HttpMessageConverter converter = 
 	        new MappingJackson2HttpMessageConverter(mapper);
 		restTemplate.getMessageConverters().add(converter);
-		System.out.println("Made the fucking bean");
 		return restTemplate;
 	}
 }
