@@ -13,7 +13,7 @@ import com.application.beans.Profile;
 @Controller
 public class AddController extends AbstractController {
 		
-	@PostMapping("/addProfile") 
+	@PostMapping("/addProfile")
 	public ModelAndView addProfile(
 			@RequestParam("resume") MultipartFile resume,
 			@RequestParam("firstName") String firstName,

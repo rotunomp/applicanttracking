@@ -11,8 +11,8 @@
           Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="addProfile">Add Profile</a>
-          <a class="dropdown-item" href="listProfiles">List Profiles</a>
+          <a class="dropdown-item" href="/addProfile">Add Profile</a>
+          <a class="dropdown-item" href="/listProfiles">List Profiles</a>
         </div>
       </li>
       
@@ -21,8 +21,8 @@
           Evaluation
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="addEvaluation">Add Evaluation</a>
-          <a class="dropdown-item" href="listEvaluations">List Evaluations</a>
+          <a class="dropdown-item" href="/addEvaluation">Add Evaluation</a>
+          <a class="dropdown-item" href="/listEvaluations">List Evaluations</a>
         </div>
       </li>
       

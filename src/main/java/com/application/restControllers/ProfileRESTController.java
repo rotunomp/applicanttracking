@@ -21,7 +21,6 @@ public class ProfileRESTController {
 	
 	@Autowired
 	ProfileService profileService;
-	ProfileRepository repo;
 	
 	@PostMapping("/profile")
 	public Profile addProfile(@RequestBody Profile profile) {
@@ -31,11 +30,11 @@ public class ProfileRESTController {
 	
 	@GetMapping("/profile/{id}")
 	public Object getProfile(@PathVariable("id") int id) {
-		return repo.findById(id);
+		return profileService.getProfile(id);
 	}
 	
 	@GetMapping("/listProfiles")
 	public java.util.List<Profile> listProfiles() {
-		return repo.findAll();
+		return profileService.getProfileList();
 	}
 }
