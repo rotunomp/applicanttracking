@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +29,12 @@ public class ProfileRESTController {
 		return profile;
 	}
 	
-	@PostMapping("/profile/{id}")
-	@ResponseBody
+	@GetMapping("/profile/{id}")
 	public Object getProfile(@PathVariable("id") int id) {
 		return repo.findById(id);
 	}
 	
-	@PostMapping("/profiles")
-	@ResponseBody
+	@GetMapping("/listProfiles")
 	public java.util.List<Profile> listProfiles() {
 		return repo.findAll();
 	}

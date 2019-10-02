@@ -19,7 +19,7 @@ public class GetPageController extends AbstractController {
 		return new ModelAndView("home");
 	}
 
-	@GetMapping("addProfile")
+	@GetMapping("addProfile") 
 	public ModelAndView addProfile() {
 		return new ModelAndView("addProfile");
 	}
