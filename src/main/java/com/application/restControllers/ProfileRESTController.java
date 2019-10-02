@@ -1,5 +1,8 @@
 package com.application.restControllers;
 
+import java.util.Optional;
+
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +28,15 @@ public class ProfileRESTController {
 		return profile;
 	}
 	
-	@RequestMapping("/profile/{id}")
+	@PostMapping("/profile/{id}")
 	@ResponseBody
-	public String getProfile(@PathVariable("id") int id) {
-		return repo.findById(id).toString();
+	public Object getProfile(@PathVariable("id") int id) {
+		return repo.findById(id);
+	}
+	
+	@PostMapping("/profiles")
+	@ResponseBody
+	public java.util.List<Profile> listProfiles() {
+		return repo.findAll();
 	}
 }
