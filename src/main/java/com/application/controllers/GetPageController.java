@@ -1,7 +1,12 @@
 package com.application.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +31,12 @@ public class GetPageController extends AbstractController {
 	
 	@GetMapping("addEvaluation")
 	public ModelAndView addEvaluation() {
-		return new ModelAndView("addEvaluation");
+		
+		ResponseEntity<Profile[]> profileResponseEntity = this.restTemplate
+				.getForEntity(this.LIST_PROFILES, Profile[].class);
+		List<Profile> profiles = Arrays.asList(profileResponseEntity.getBody());
+		
+		return new ModelAndView("addEvaluation").addObject("profiles", profiles);
 	}
 	
 	@GetMapping("getEvaluation/{id}")

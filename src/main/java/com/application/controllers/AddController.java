@@ -1,5 +1,7 @@
 package com.application.controllers;
 
+import java.sql.Date;
+
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +37,34 @@ public class AddController extends AbstractController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/addEvaluation")
-	public ModelAndView addEvaluation(Evaluation evaluation) {
+	@PostMapping("addEvaluation")
+	public ModelAndView addEvaluation(
+			@RequestParam("reviewerEmail") String reviewerEmail,
+			@RequestParam("date") String justDate,
+			@RequestParam("time") String time,
+			@RequestParam("profile") int profileId
+			)
+	{
+		// TODO: figure best way to move business logic out of the controller
+
+		// We need to set the date of eval from the stuff we got in the front
+		int year = Integer.parseInt(justDate.substring(0, 4));
+		int month = Integer.parseInt(justDate.substring(5, 7));
+		int day = Integer.parseInt(justDate.substring(8));
+		int hours = Integer.parseInt(time.substring(0, 2));
+		int minutes = Integer.parseInt(time.substring(3));
+		Date interviewDate = new Date(year, month, day);
+		interviewDate.setHours(hours);
+		interviewDate.setMinutes(minutes);
+		
+		// Make the profile with the correct id to inject into the class
+		Profile profile = new Profile();
+		profile.setId(profileId);
+		
+		Evaluation evaluation = new Evaluation();
+		evaluation.setReviewerEmail(reviewerEmail);
+		evaluation.setInterviewDate(interviewDate);
+		evaluation.setProfile(profile);
 		
 		Evaluation respEvaluation = this.restTemplate.postForObject
 				(this.EVALUATION_URI, evaluation, Evaluation.class);
