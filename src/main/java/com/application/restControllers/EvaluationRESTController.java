@@ -12,28 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.application.beans.Profile;
-import com.application.services.ProfileService;
+import com.application.beans.Evaluation;
+import com.application.services.EvaluationService;
 
 @RestController
-public class ProfileRESTController {
+public class EvaluationRESTController {
 	
 	@Autowired
-	ProfileService profileService;
+	EvaluationService evaluationService;
 	
-	@PostMapping("/profile")
-	public Profile addProfile(@RequestBody Profile profile) {
-		profileService.addProfile(profile);
-		return profile;
+	@PostMapping("/evaluation")
+	public Evaluation addEvaluation(@RequestBody Evaluation evaluation) {
+		evaluationService.addEvaluation(evaluation);
+		return evaluation;
 	}
 	
-	@GetMapping("/profile/{id}")
-	public Object getProfile(@PathVariable("id") int id) {
-		return profileService.getProfile(id);
+	@GetMapping("/evaluation/{id}")
+	public Object getEvaluation(@PathVariable("id") int id) {
+		return evaluationService.getEvaluation(id);
 	}
 	
-	@GetMapping("/listProfiles")
-	public java.util.List<Profile> listProfiles() {
-		return profileService.getProfileList();
+	@GetMapping("/listEvaluations")
+	public java.util.List<Evaluation> listEvaluations() {
+		return evaluationService.getEvaluationList();
 	}
 }
