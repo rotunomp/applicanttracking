@@ -3,10 +3,12 @@ package com.application.beans;
 import java.sql.Blob;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -25,8 +27,9 @@ public class Profile {
 	private String email;
 	private Blob resume;
 //	private List<String> technologies;
-//	@Autowired
-//	private List<Evalutaion> evalutaions;
+	@Autowired
+	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+	private List<Evaluation> evalutaions;
 	
 	
 	public int getId() {
