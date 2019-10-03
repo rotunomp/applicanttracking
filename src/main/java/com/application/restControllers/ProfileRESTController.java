@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.beans.Profile;
-import com.application.repositories.ProfileRepository;
 import com.application.services.ProfileService;
 
 @RestController
