@@ -1,10 +1,8 @@
 package com.application.beans;
 
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -31,9 +28,8 @@ public class Evaluation {
 	private String feedback;
 	private int rating;
 	
-	@Autowired
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "prof_id")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, targetEntity = Profile.class)
+    @JoinColumn(name = "profile_id")
 	private Profile profile;
 	
 	
