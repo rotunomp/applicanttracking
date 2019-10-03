@@ -16,29 +16,29 @@
 
 	<div class="h1 text-center my-4">Update profile</div>
 	
-	<form action="addProfile" method="post" enctype="multipart/form-data">
+	<form action="/updateProfile/${Integer.toString(profile.getId())}" method="post" enctype="multipart/form-data">
 	
 		<div class="input-group form-group">
 		  <div class="input-group-prepend">
 		    <span class="input-group-text">Name</span>
 		  </div>
 		  <input type="text" class="form-control mr-1" name="firstName" placeholder="First name" value='${profile.getFirstName() }'>
-		  <input type="text" class="form-control" name="lastName" placeholder="Last name">
+		  <input type="text" class="form-control" name="lastName" placeholder="Last name" value = '${profile.getLastName() }'>
 		</div>
 	
 	    <div class="form-group">
 	      <label>Email</label>
-	      <input type="email" class="form-control" placeholder="Enter email" name="email">
+	      <input type="email" class="form-control" placeholder="Enter email" name="email" value = '${profile.getEmail() }'>
 	    </div>
 	    
 		<label>Upload Resume</label>    
 		<div class="custom-file mb-3">
-		  <input type="file" class="custom-file-input" id="customFile" name="resume">
+		  <input type="file" class="custom-file-input" id="customFile" name="resume" >
 		  <label class="custom-file-label">Choose file</label>
 		</div>
 	    
 	    <div class="form-group">
-	    	<input type="submit" class="btn btn-primary" value="Add Person">
+	    	<input type="submit" class="btn btn-primary" value="Update">
 	    </div>
 	    
 	    
