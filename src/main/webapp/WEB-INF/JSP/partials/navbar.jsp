@@ -12,7 +12,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/addProfile">Add Profile</a>
-          <a class="dropdown-item" href="/listProfiles">List Profiles</a>
+          <a class="dropdown-item" href="/listProfile">List Profiles</a>
         </div>
       </li>
       
@@ -22,7 +22,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/addEvaluation">Add Evaluation</a>
-          <a class="dropdown-item" href="/listEvaluations">List Evaluations</a>
+          <a class="dropdown-item" href="/listEvaluation">List Evaluations</a>
         </div>
       </li>
       

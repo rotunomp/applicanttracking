@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +26,7 @@ public class Profile {
 	private String email;
 	private Blob resume;
 //	private List<String> technologies;
-	@Autowired
-	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, targetEntity = Evaluation.class)
 	private List<Evaluation> evalutaions;
 	
 	
@@ -68,20 +66,17 @@ public class Profile {
 //	public void setTechnologies(List<String> technologies) {
 //		this.technologies = technologies;
 //	}
-//	public List<Evalutaion> getEvalutaions() {
-//		return evalutaions;
-//	}
-//	public void setEvalutaions(List<Evalutaion> evalutaions) {
-//		this.evalutaions = evalutaions;
-//	}
+	public List<Evaluation> getEvalutaions() {
+		return evalutaions;
+	}
+	public void setEvalutaions(List<Evaluation> evalutaions) {
+		this.evalutaions = evalutaions;
+	}
 	@Override
 	public String toString() {
 		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", resume=" + resume + "]";
 	}
-	
-	
-	
 	
 	
 }

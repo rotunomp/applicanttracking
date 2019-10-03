@@ -58,18 +58,20 @@ public class GetPageController extends AbstractController {
 
 	@GetMapping("listProfile")
 	public ModelAndView listProfile() {
-		List<Profile> profiles = this.restTemplate.getForObject
-				(this.LIST_PROFILES + "", List.class);
-		
-		return new ModelAndView("listProfiles").addObject(profiles);
+		ResponseEntity<Profile[]> profileResponseEntity = this.restTemplate
+				.getForEntity(this.LIST_PROFILES, Profile[].class);
+		List<Profile> profiles = Arrays.asList(profileResponseEntity.getBody());
+				
+		return new ModelAndView("listProfiles").addObject("profiles", profiles);
 	}
 
 	@GetMapping("listEvaluation")
 	public ModelAndView listEvaluation() {
-		List<Evaluation> evaluations = this.restTemplate.getForObject
-				(this.LIST_PROFILES + "", List.class);
-
-		return new ModelAndView("listEvaluations").addObject(evaluations);
+		ResponseEntity<Evaluation[]> evaluationResponseEntity = this.restTemplate
+				.getForEntity(this.LIST_EVAUATIONS, Evaluation[].class);
+		List<Evaluation> evaluations = Arrays.asList(evaluationResponseEntity.getBody());
+		
+		return new ModelAndView("listEvaluations").addObject("evaluations", evaluations);
 	}
 
 	@GetMapping("updateProfile/{id}")

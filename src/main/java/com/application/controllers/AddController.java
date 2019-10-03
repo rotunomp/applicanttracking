@@ -1,6 +1,12 @@
 package com.application.controllers;
 
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -53,18 +59,32 @@ public class AddController extends AbstractController {
 		int day = Integer.parseInt(justDate.substring(8));
 		int hours = Integer.parseInt(time.substring(0, 2));
 		int minutes = Integer.parseInt(time.substring(3));
-		Date interviewDate = new Date(year, month, day);
-		interviewDate.setHours(hours);
-		interviewDate.setMinutes(minutes);
+		
+		System.out.println(hours);
+		
+	      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+	      System.out.print(justDate + " Parses as "); 
+	      Date interviewDate = null;
+	      try {
+	         interviewDate = ft.parse(justDate); 
+	         System.out.println(interviewDate); 
+	      } catch (ParseException e) { 
+	         System.out.println("Unparseable using " + ft); 
+	      }		
+	     interviewDate.setHours(hours);
+	     interviewDate.setMinutes(minutes);
+	      		
 		
 		// Make the profile with the correct id to inject into the class
-		Profile profile = new Profile();
-		profile.setId(profileId);
+		Profile profile = this.restTemplate.getForObject
+				(this.PROFILE_URI + "/" + profileId, Profile.class);
+		
 		
 		Evaluation evaluation = new Evaluation();
 		evaluation.setReviewerEmail(reviewerEmail);
 		evaluation.setInterviewDate(interviewDate);
 		evaluation.setProfile(profile);
+//		profile.getEvalutaions().add(evaluation);
 		
 		Evaluation respEvaluation = this.restTemplate.postForObject
 				(this.EVALUATION_URI, evaluation, Evaluation.class);
