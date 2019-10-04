@@ -40,9 +40,9 @@
 					</td>
 					<td>${evaluation.getRating()}</td>
 					<td>
-						<a class="btn btn-primary" href="/getProfile/${profile.getId()}">View</a>
-						<a class="btn btn-info" href="/updateProfile/${profile.getId()}">Edit</a>
-						<a class="btn btn-danger" href="/deleteProfile/${profile.getId()}">Delete</a>
+						<a class="btn btn-primary" href="/getEvaluation/${evaluation.getId()}">View</a>
+						<a class="btn btn-info" href="/updateEvaluation/${evaluation.getId()}">Edit</a>
+						<a class="btn btn-danger" href="/deleteEvaluation/${evaluation.getId()}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
