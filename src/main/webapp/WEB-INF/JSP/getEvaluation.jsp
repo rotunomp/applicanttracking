@@ -21,13 +21,13 @@
 		
 	    <div class="form-group">
 	      <label>Reviewer Email</label>
-	      <input type="email" class="form-control" placeholder="Enter email" name="reviewerEmail">
+	      <input type="email" class="form-control" placeholder="Enter email" name="reviewerEmail" value='${evaluation.getReviewerEmail() }' >
 	    </div>
 	    
 	    <div class="form-group">
 			<label>Date of Evaluation</label>
 		    <input class="form-control"
-								name="date" type="date">
+								name="date" type="date" value='${evaluation.getInterviewDate() }'>
 		</div>
 		
 		<div class="form-group">
@@ -39,7 +39,7 @@
 			<label>Profile to be Evaluated</label>
 			<select class="form-control" name="profile">
 				<c:forEach items="${profiles}" var="profile">
-					<option value='${profile.getId()}'>${profile.getFirstName() } ${profile.getLastName() }</option>
+					<option value='${evaluation.getProfile().getId()}'>${evaluation.getProfile().getFirstName() } ${profile.getLastName() }</option>
 				</c:forEach>
 			</select>
 		</div>
