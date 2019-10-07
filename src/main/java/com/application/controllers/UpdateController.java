@@ -35,7 +35,7 @@ public class UpdateController extends AbstractController {
 		
 		//Put was giving me crap so I'm using this instead?
 		this.restTemplate.postForObject
-				(this.PROFILE_URI, profile, Profile.class);
+				(this.PROFILE_URI + id, profile, Profile.class);
 		
 		System.out.println("this.restTemplate ran");
 		
@@ -49,7 +49,7 @@ public class UpdateController extends AbstractController {
 		
 		evaluation.setId(id);
 		this.restTemplate.put
-				(this.EVALUATION_URI, evaluation, Evaluation.class);
+				(this.EVALUATION_URI + id, evaluation, Evaluation.class);
 		
 		// TODO: make redirect to view page of object we just updated
 		ModelAndView modelAndView = new ModelAndView("home");

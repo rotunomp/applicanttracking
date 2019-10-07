@@ -33,7 +33,7 @@ public class GetPageController extends AbstractController {
 	public ModelAndView addEvaluation() {
 		
 		ResponseEntity<Profile[]> profileResponseEntity = this.restTemplate
-				.getForEntity(this.LIST_PROFILES, Profile[].class);
+				.getForEntity(this.PROFILE_URI, Profile[].class);
 		List<Profile> profiles = Arrays.asList(profileResponseEntity.getBody());
 		
 		return new ModelAndView("addEvaluation").addObject("profiles", profiles);
@@ -43,7 +43,7 @@ public class GetPageController extends AbstractController {
 	public ModelAndView getEvaluation(@PathVariable("id") int id) {
 		
 		Evaluation respEvaluation = this.restTemplate.getForObject
-				(this.EVALUATION_URI + "/" + id, Evaluation.class);
+				(this.EVALUATION_URI + id, Evaluation.class);
 		
 		return new ModelAndView("getEvaluation").addObject(respEvaluation);
 	}
@@ -51,7 +51,7 @@ public class GetPageController extends AbstractController {
 	@GetMapping("getProfile/{id}")
 	public ModelAndView getProfile(@PathVariable("id") int id) {
 		Profile respProfile = this.restTemplate.getForObject
-				(this.PROFILE_URI + "/" + id , Profile.class);
+				(this.PROFILE_URI + id , Profile.class);
 		
 		return new ModelAndView("getProfile").addObject(respProfile);
 	}
@@ -59,7 +59,7 @@ public class GetPageController extends AbstractController {
 	@GetMapping("listProfile")
 	public ModelAndView listProfile() {
 		ResponseEntity<Profile[]> profileResponseEntity = this.restTemplate
-				.getForEntity(this.LIST_PROFILES, Profile[].class);
+				.getForEntity(this.PROFILE_URI, Profile[].class);
 		List<Profile> profiles = Arrays.asList(profileResponseEntity.getBody());
 				
 		return new ModelAndView("listProfiles").addObject("profiles", profiles);
@@ -68,7 +68,7 @@ public class GetPageController extends AbstractController {
 	@GetMapping("listEvaluation")
 	public ModelAndView listEvaluation() {
 		ResponseEntity<Evaluation[]> evaluationResponseEntity = this.restTemplate
-				.getForEntity(this.LIST_EVAUATIONS, Evaluation[].class);
+				.getForEntity(this.EVALUATION_URI, Evaluation[].class);
 		List<Evaluation> evaluations = Arrays.asList(evaluationResponseEntity.getBody());
 		
 		return new ModelAndView("listEvaluations").addObject("evaluations", evaluations);
@@ -77,7 +77,7 @@ public class GetPageController extends AbstractController {
 	@GetMapping("updateProfile/{id}")
 	public ModelAndView updateProfile(@PathVariable("id") int id) {
 		Profile respProfile = this.restTemplate.getForObject
-				(this.PROFILE_URI + "/" + id , Profile.class);
+				(this.PROFILE_URI + id , Profile.class);
 		
 		return new ModelAndView("updateProfile").addObject(respProfile);
 	}
@@ -85,7 +85,7 @@ public class GetPageController extends AbstractController {
 	@GetMapping("updateEvaluation/{id}")
 	public ModelAndView updateEvaluation(@PathVariable("id") int id) {
 		Evaluation respEvaluation = this.restTemplate.getForObject
-				(this.EVALUATION_URI + "/" + id, Evaluation.class);
+				(this.EVALUATION_URI + id, Evaluation.class);
 
 		return new ModelAndView("updateEvaluation").addObject(respEvaluation);
 	}

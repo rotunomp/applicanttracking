@@ -10,7 +10,7 @@ public class DeleteController extends AbstractController {
 	
 	@PostMapping("deleteProfile/{id}")
 	public ModelAndView deleteProfile(@PathVariable("id") int id) {
-		this.restTemplate.delete(this.PROFILE_URI + "/" + id);
+		this.restTemplate.delete(this.PROFILE_URI + id);
 		
 		// TODO: redirect to the list Profile page
 		return new ModelAndView("home");
@@ -18,7 +18,7 @@ public class DeleteController extends AbstractController {
 	
 	@PostMapping("deleteEvaluation/{id}")
 	public ModelAndView deleteEvaluation(@PathVariable("id") int id) {
-		this.restTemplate.delete(this.EVALUATION_URI + "/" + id);
+		this.restTemplate.delete(this.EVALUATION_URI + id);
 		
 		// TODO: redirect to the list Profile page
 		return new ModelAndView("home");

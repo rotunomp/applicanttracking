@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,30 +18,35 @@ import com.application.beans.Profile;
 import com.application.services.ProfileService;
 
 @RestController
+@RequestMapping("/api")
 public class ProfileRESTController {
 	
 	@Autowired
 	ProfileService profileService;
 	
-	@PostMapping("/profile")
+	@PostMapping("/profiles")
 	public Profile addProfile(@RequestBody Profile profile) {
 		profileService.addProfile(profile);
 		return profile;
 	}
 	
-	@PutMapping("/profile/{id}")
+	@PutMapping("/profiles/{id}")
 	public Profile updateProfile(@PathVariable("id") int id,@RequestBody Profile profile) {
 		profile.setId(id);
 		profileService.addProfile(profile);
 		return profile;
 	}
 	
-	@GetMapping("/profile/{id}")
+	@GetMapping("/profiles/{id}")
 	public Object getProfile(@PathVariable("id") int id) {
 		return profileService.getProfile(id);
 	}
 	
-	@GetMapping("/listProfiles")
+	// This is Cross-origin enabling (CORS)
+	// Normally scripts cannot access REST APIs
+	// due to security reasons, but this allows it
+    @CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/profiles")
 	public java.util.List<Profile> listProfiles() {
 		return profileService.getProfileList();
 	}
