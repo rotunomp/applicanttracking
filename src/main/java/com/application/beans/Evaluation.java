@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Component
 @Scope("prototype")
@@ -33,7 +34,6 @@ public class Evaluation {
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, targetEntity = Profile.class)
     @JoinColumn(name = "profile_id", nullable=false)
-	@JsonBackReference
 	private Profile profile;
 	
 	

@@ -15,11 +15,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Component
 @Scope("prototype")
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Profile {
 
 	@Id
@@ -32,7 +35,6 @@ public class Profile {
 //	private List<String> technologies;
 	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, targetEntity = Evaluation.class)
 	@Nullable
-	@JsonManagedReference
 	private List<Evaluation> evalutaions;
 	
 	

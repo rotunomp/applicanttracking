@@ -16,7 +16,6 @@ public class EvaluationService {
 	private EvaluationRepository evaluationRepository;
 
 	public Evaluation addEvaluation(Evaluation evaluation) {
-		System.out.println(evaluation.toString());
 		evaluationRepository.save(evaluation);
 		return evaluation;
 	}

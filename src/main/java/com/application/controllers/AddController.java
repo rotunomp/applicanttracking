@@ -8,7 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,13 +88,7 @@ public class AddController extends AbstractController {
 		evaluation.setInterviewDate(interviewDate);
 		evaluation.setProfile(profile);
 		
-		System.out.println("Evaluation before REST add: " + evaluation.toString());
-		
-//		profile.getEvalutaions().add(evaluation);
-		
-//		this.restTemplate.put(this.PROFILE_URI + profileId, profile);
-		
-		Evaluation respEvaluation = this.restTemplate.postForObject
+		this.restTemplate.postForObject
 				(this.EVALUATION_URI, evaluation, Evaluation.class);
 		
 		// TODO: make redirect to view page of object we just added
