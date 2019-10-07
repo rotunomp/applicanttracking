@@ -16,23 +16,25 @@ import com.application.beans.Evaluation;
 import com.application.services.EvaluationService;
 
 @RestController
+@RequestMapping("/api")
 public class EvaluationRESTController {
 	
 	@Autowired
 	EvaluationService evaluationService;
 	
-	@PostMapping("/evaluation")
+	@PostMapping("/evaluations")
 	public Evaluation addEvaluation(@RequestBody Evaluation evaluation) {
+		System.out.println("Evaluation in the REST controller: " + evaluation);
 		evaluationService.addEvaluation(evaluation);
 		return evaluation;
 	}
 	
-	@GetMapping("/evaluation/{id}")
+	@GetMapping("/evaluations/{id}")
 	public Object getEvaluation(@PathVariable("id") int id) {
 		return evaluationService.getEvaluation(id);
 	}
 	
-	@GetMapping("/listEvaluations")
+	@GetMapping("/evaluations")
 	public java.util.List<Evaluation> listEvaluations() {
 		return evaluationService.getEvaluationList();
 	}

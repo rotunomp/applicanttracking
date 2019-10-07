@@ -8,7 +8,7 @@ public abstract class AbstractController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	protected final String PROFILE_URI = "http://localhost:8080/profiles/"; 
-	protected final String EVALUATION_URI = "http://localhost:8080/evaluations/"; 
+	protected final String PROFILE_URI = "http://localhost:8080/api/profiles/"; 
+	protected final String EVALUATION_URI = "http://localhost:8080/api/evaluations/"; 
 
 }

@@ -77,14 +77,20 @@ public class AddController extends AbstractController {
 		
 		// Make the profile with the correct id to inject into the class
 		Profile profile = this.restTemplate.getForObject
-				(this.PROFILE_URI + "/" + profileId, Profile.class);
+				(this.PROFILE_URI + profileId, Profile.class);
 		
+		System.out.println(profile.toString());
 		
 		Evaluation evaluation = new Evaluation();
 		evaluation.setReviewerEmail(reviewerEmail);
 		evaluation.setInterviewDate(interviewDate);
 		evaluation.setProfile(profile);
+		
+		System.out.println("Evaluation before REST add: " + evaluation.toString());
+		
 //		profile.getEvalutaions().add(evaluation);
+		
+//		this.restTemplate.put(this.PROFILE_URI + profileId, profile);
 		
 		Evaluation respEvaluation = this.restTemplate.postForObject
 				(this.EVALUATION_URI, evaluation, Evaluation.class);

@@ -45,7 +45,7 @@ public class ProfileRESTController {
 	// This is Cross-origin enabling (CORS)
 	// Normally scripts cannot access REST APIs
 	// due to security reasons, but this allows it
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/profiles")
 	public java.util.List<Profile> listProfiles() {
 		return profileService.getProfileList();

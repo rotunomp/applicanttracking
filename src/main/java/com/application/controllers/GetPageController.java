@@ -29,14 +29,14 @@ public class GetPageController extends AbstractController {
 		return new ModelAndView("addProfile");
 	}
 	
-	@GetMapping("addEvaluation")
+	@GetMapping("/addEvaluation")
 	public ModelAndView addEvaluation() {
 		
 		ResponseEntity<Profile[]> profileResponseEntity = this.restTemplate
 				.getForEntity(this.PROFILE_URI, Profile[].class);
 		List<Profile> profiles = Arrays.asList(profileResponseEntity.getBody());
 		
-		return new ModelAndView("addEvaluation").addObject("profiles", profiles);
+		return new ModelAndView("/addEvaluation").addObject("profiles", profiles);
 	}
 	
 	@GetMapping("getEvaluation/{id}")

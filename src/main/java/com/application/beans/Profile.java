@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Component
 @Scope("prototype")
@@ -27,6 +31,8 @@ public class Profile {
 	private Blob resume;
 //	private List<String> technologies;
 	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, targetEntity = Evaluation.class)
+	@Nullable
+	@JsonManagedReference
 	private List<Evaluation> evalutaions;
 	
 	

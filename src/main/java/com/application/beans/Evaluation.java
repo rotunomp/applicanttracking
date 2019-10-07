@@ -3,6 +3,7 @@ package com.application.beans;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Component
 @Scope("prototype")
@@ -29,7 +32,8 @@ public class Evaluation {
 	private int rating;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, targetEntity = Profile.class)
-    @JoinColumn(name = "profile_id")
+    @JoinColumn(name = "profile_id", nullable=false)
+	@JsonBackReference
 	private Profile profile;
 	
 	
