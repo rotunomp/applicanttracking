@@ -22,25 +22,20 @@
 		  <div class="input-group-prepend">
 		    <span class="input-group-text">Name</span>
 		  </div>
-		  <input type="text" class="form-control mr-1" name="firstName" value='${profile.getFirstName() } '>
-		  <input type="text" class="form-control" name="lastName" value = ${profile.getLastName() }>
+		  <input type="text" class="form-control mr-1" name="firstName" value='${profile.getFirstName() } ' readonly>
+		  <input type="text" class="form-control" name="lastName" value = ${profile.getLastName() } readonly>
 		</div>
 	
 	    <div class="form-group">
 	      <label>Email</label>
-	      <input type="email" class="form-control" placeholder="Enter email" name="email" value = ${profile.getEmail() } >
+	      <input type="email" class="form-control" placeholder="Enter email" name="email" value = ${profile.getEmail() } readonly>
 	    </div>
 	    
 		<label>Upload Resume</label>    
 		<div class="custom-file mb-3">
-		  <input type="file" class="custom-file-input" id="customFile" name="resume">
+		  <input type="file" class="custom-file-input" id="customFile" name="resume" readonly>
 		  <label class="custom-file-label">Choose file</label>
 		</div>
-	    
-	    <div class="form-group">
-	    	<input type="submit" class="btn btn-primary" value="Add Person">
-	    </div>
-	    
 	    
 	</form>
 	
