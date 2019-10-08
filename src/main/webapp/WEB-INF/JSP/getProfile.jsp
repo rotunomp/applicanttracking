@@ -31,12 +31,6 @@
 	      <input type="email" class="form-control" placeholder="Enter email" name="email" value = ${profile.getEmail() } readonly>
 	    </div>
 	    
-		<label>Upload Resume</label>    
-		<div class="custom-file mb-3">
-		  <input type="file" class="custom-file-input" id="customFile" name="resume" readonly>
-		  <label class="custom-file-label">Choose file</label>
-		</div>
-	    
 	</form>
 	
 </div>
