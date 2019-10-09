@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.beans.Evaluation;
@@ -20,8 +21,13 @@ public class EvaluationRESTController {
 	EvaluationService evaluationService;
 	
 	@PostMapping("/evaluations")
-	public Evaluation addEvaluation(@RequestBody Evaluation evaluation) {
-		evaluationService.addEvaluation(evaluation);
+	public Evaluation addEvaluation(			
+			@RequestParam("reviewerEmail") String reviewerEmail,
+			@RequestParam("date") String date,
+			@RequestParam("time") String time,
+			@RequestParam("profile") int profileId
+) {
+		evaluationService.addEvaluation(reviewerEmail, date, time, profileId);
 		return evaluation;
 	}
 	
