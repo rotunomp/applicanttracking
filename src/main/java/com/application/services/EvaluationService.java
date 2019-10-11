@@ -35,18 +35,18 @@ public class EvaluationService {
 		int hours = Integer.parseInt(time.substring(0, 2));
 		int minutes = Integer.parseInt(time.substring(3));
 		
-	      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
-	      System.out.print(date + " Parses as "); 
-	      Date interviewDate = null;
-	      try {
-	         interviewDate = ft.parse(date); 
-	         System.out.println(interviewDate); 
-	      } catch (ParseException e) { 
-	         System.out.println("Unparseable using " + ft); 
-	      }		
-	     interviewDate.setHours(hours);
-	     interviewDate.setMinutes(minutes);
-	      		
+	    SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+	    System.out.print(date + " Parses as "); 
+	    Date interviewDate = null;
+	    try {
+	       interviewDate = ft.parse(date); 
+	       System.out.println(interviewDate); 
+	    } catch (ParseException e) { 
+	       System.out.println("Unparseable using " + ft); 
+	    }		
+	    interviewDate.setHours(hours);
+	    interviewDate.setMinutes(minutes);
+	    
 		
 		// Make the profile with the correct id to inject into the class
 		Optional<Profile> profile = this.profileRepository.findById(profileId);
@@ -66,6 +66,15 @@ public class EvaluationService {
 
 	public List<Evaluation> getEvaluationList() {
 		return evaluationRepository.findAll();
+	}
+
+	public Evaluation addEvaluation(Evaluation evaluation, int profileId) {
+		// Make the profile with the correct id to inject into the class
+		Optional<Profile> profile = this.profileRepository.findById(profileId);
+
+		evaluation.setProfile(profile.get());
+		evaluationRepository.save(evaluation);
+		return evaluation;
 	}
 
 }

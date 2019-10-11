@@ -1,10 +1,13 @@
 package com.application.restControllers;
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +24,15 @@ public class EvaluationRESTController {
 	EvaluationService evaluationService;
 	
 	@PostMapping("/evaluations")
-	public Evaluation addEvaluation(			
-			@RequestParam("reviewerEmail") String reviewerEmail,
-			@RequestParam("date") String date,
-			@RequestParam("time") String time,
-			@RequestParam("profile") int profileId
-) {
-		evaluationService.addEvaluation(reviewerEmail, date, time, profileId);
+	public Evaluation addEvaluation(
+			@RequestBody Evaluation evaluation,
+			@RequestParam String profileId) {
+		System.out.println(evaluation.toString());
+		System.out.println(profileId);
+		System.out.println(evaluation.getInterviewDate());
+		int profileIdInt = Integer.parseInt(profileId);
+		evaluationService.addEvaluation(evaluation, profileIdInt);
+		// TODO: re-route to view page for the eval we just added
 		return evaluation;
 	}
 	

@@ -21,7 +21,7 @@
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">Reviewer Email</th>
-				<th scope="col">Interview Date</th>
+				<th scope="col">Interview Date (M/D/Y)</th>
 				<th scope="col">Interview Time</th>
 				<th scope="col">Rating</th>
 				<th scope="col">Operations</th>
@@ -33,7 +33,7 @@
 					<td>${evaluation.getId() }</td>
 					<td>${evaluation.getReviewerEmail() }</td>
 					<td>
-					${evaluation.getInterviewDate().getDate()} ${evaluation.getInterviewDate().getMonth() } ${evaluation.getInterviewDate().getYear() }
+					${evaluation.getInterviewDate().getDate()} / ${evaluation.getInterviewDate().getMonth() } / ${evaluation.getInterviewDate().getYear() }
 					</td>
 					<td>
 					${evaluation.getInterviewDate().getHours() }:${evaluation.getInterviewDate().getMinutes() }
